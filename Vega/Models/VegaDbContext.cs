@@ -10,7 +10,8 @@ namespace Vega.Models
 
         }
 
-        public DbSet<Model> Models { get; set; }
+        public DbSet<Make> Makes { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
