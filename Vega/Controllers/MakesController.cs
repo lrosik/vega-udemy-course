@@ -8,7 +8,7 @@ using Vega.Models;
 
 namespace Vega.Controllers
 {
-
+    [Route("api/[controller]")]
     public class MakesController : Controller
     {
         private readonly VegaDbContext _context;
@@ -20,7 +20,7 @@ namespace Vega.Controllers
             _context = context;
         }
 
-        [HttpGet("api/makes")]
+        [HttpGet]
         public async Task<IEnumerable<MakeDto>> GetMakes()
         {
             var makes = _context.Makes.Include(m => m.Models).ToListAsync();
