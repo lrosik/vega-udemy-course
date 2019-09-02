@@ -11,6 +11,7 @@ namespace Vega.Models
         }
 
         public DbSet<Make> Makes { get; set; }
+        public DbSet<Feature> Features { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -41,6 +42,18 @@ namespace Vega.Models
                 new Model { Id = 13, Name = "Golf", MakeId = 5 },
                 new Model { Id = 14, Name = "Passat", MakeId = 5 },
                 new Model { Id = 15, Name = "Tiguan", MakeId = 5 }
+            );
+
+            modelBuilder.Entity<Feature>().HasData(
+                new Feature { Id = 1, Name = "Cup holder" },
+                new Feature { Id = 2, Name = "Air condition" },
+                new Feature { Id = 3, Name = "Heated seats" },
+                new Feature { Id = 4, Name = "Automatic transmission" },
+                new Feature { Id = 5, Name = "Manual transmission" },
+                new Feature { Id = 6, Name = "Navigation" },
+                new Feature { Id = 7, Name = "Steel wheels" },
+                new Feature { Id = 8, Name = "Alloy wheels" },
+                new Feature { Id = 9, Name = "Heated windscreen" }
             );
         }
     }

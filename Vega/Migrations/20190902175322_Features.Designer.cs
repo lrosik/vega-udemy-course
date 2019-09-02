@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vega.Models;
 
 namespace Vega.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    partial class VegaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190902175322_Features")]
+    partial class Features
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,53 +33,6 @@ namespace Vega.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Features");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Cup holder"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Air condition"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Heated seats"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Automatic transmission"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Manual transmission"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Navigation"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Steel wheels"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Alloy wheels"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Heated windscreen"
-                        });
                 });
 
             modelBuilder.Entity("Vega.Models.Make", b =>
