@@ -13,6 +13,8 @@ namespace Vega
 {
     public class Startup
     {
+        private string _allowAngularAppCorsPolicy = "AllowAngularApp";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,6 +25,14 @@ namespace Vega
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(_allowAngularAppCorsPolicy, builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200");
+                });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddAutoMapper(typeof(Startup));
@@ -50,6 +60,8 @@ namespace Vega
                 app.UseHsts();
             }
 
+            app.UseCors(_allowAngularAppCorsPolicy);
+
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -70,7 +82,8 @@ namespace Vega
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseAngularCliServer(npmScript: "start");
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                    // spa.UseAngularCliServer(npmScript: "start");
                 }
             });
         }
