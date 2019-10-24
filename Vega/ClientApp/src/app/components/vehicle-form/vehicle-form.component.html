@@ -7,16 +7,32 @@
       name="make"
       class="form-control"
       (change)="onMakeChange()"
-      [(ngModel)]="vehicle.make"
+      [(ngModel)]="selectedMakeId"
     >
-      <option value=""></option>
-      <option *ngFor="let make of makes" value="{{ make.id }}">{{
+      <option [ngValue]=""></option>
+      <option *ngFor="let make of makes" [ngValue]="make.id">{{
         make.name
       }}</option>
     </select>
   </div>
   <div class="form-group">
     <label for="model">Model</label>
-    <select id="model" class="form-control"></select>
+    <select id="model" class="form-control">
+      <option value=""></option>
+      <option *ngFor="let model of models" [ngValue]="model.id">{{
+        model.name
+      }}</option>
+    </select>
+  </div>
+  <h2>Features</h2>
+  <div *ngFor="let feature of features" class="custom-control custom-checkbox">
+    <input
+      type="checkbox"
+      id="feature{{ feature.id }}"
+      class="custom-control-input"
+    />
+    <label for="feature{{ feature.id }}" class="custom-control-label"
+      >{{ feature.name }}
+    </label>
   </div>
 </form>
