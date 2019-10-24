@@ -31,7 +31,6 @@ export class VehicleFormComponent implements OnInit {
   }
 
   onMakeChange() {
-    console.log('vehicle ', this.selectedMakeId);
     if (this.selectedMakeId) {
       this.modelService
         .getModels(this.selectedMakeId)
