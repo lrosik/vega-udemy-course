@@ -23,9 +23,9 @@ namespace Vega.Controllers
         [HttpGet("{id}")]
         public async Task<IEnumerable<ModelDto>> GetModels(int id)
         {
-            var models = _context.Models.Where(m => m.MakeId == id);
+            var models = _context.Models.Where(m => m.MakeId == id).ToListAsync();
 
-            return _mapper.Map<IEnumerable<Model>, IEnumerable<ModelDto>>(models);
+            return _mapper.Map<IEnumerable<Model>, IEnumerable<ModelDto>>(await models);
         }
     }
 }
